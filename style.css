@@ -1,0 +1,227 @@
+html, body { 
+    --color-1: #a8e6cf;
+    --color-2: #dcedc1; 
+    --color-3: #ffd3b6; 
+    --color-4: #ffaaa5; 
+    --color-5: #ff8b94;
+    --color-6: #fff;
+    --color-7: #222;
+    --color-8: #d9ffff;
+    --color-9: #FFE21D;
+    --color-10: #1387CE;
+    --color-11: #D43E97;
+    --color-12: #e85a63;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #DFDBE5;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMTAiIGhlaWdodD0iMTEwIj4KPGNpcmNsZSBjeD0iNjAiIGN5PSI2MCIgcj0iMTAiIGZpbGw9IiNGRkYiIG9wYWNpdHk9IjAuNCI+PC9jaXJjbGU+CjxjaXJjbGUgY3g9IjEwIiBjeT0iMTAiIHI9IjEwIiBmaWxsPSIjRkZGIiBvcGFjaXR5PSIwLjQiPjwvY2lyY2xlPgo8L3N2Zz4="), linear-gradient( var(--color-9) , var(--color-9));
+    font-family: 'Staatliches', cursive;
+    font-size: 24px;
+    line-height: 0.5em;
+    height: 100vh;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 75%;
+    max-width: 800px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: white;
+    border: 20px solid var(--color-7);
+    padding: 50px;
+}
+
+.players {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#message {
+    margin-top: 0;
+    font-family: 'Fredoka One', cursive;
+    font-size: 48px;
+    letter-spacing: 0.25em;
+    color: var(--color-6);
+    line-height: 1em;
+    text-shadow:
+    -1px -1px var(--color-10),
+    -1px -2px var(--color-10),
+    -1px -3px var(--color-10),
+    -1px -4px var(--color-10),
+    -2px -2px var(--color-10),
+    -3px -3px var(--color-10),
+    -4px -4px var(--color-10),
+    1px 1px var(--color-11),
+    2px 1px var(--color-11),
+    3px 1px var(--color-11),
+    4px 1px var(--color-11),
+    2px 2px var(--color-11),
+    3px 3px var(--color-11),
+    4px 4px var(--color-11);
+}
+
+.dice {
+    font-family: 'dice';
+    border-radius: 10px;
+    background-color: var(--color-6);
+    margin: 60px auto 25px;
+    font-size: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: var(--color-6);
+}
+.active::before, .active::after {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    color: var(--color-7);
+}
+
+.active::after {
+    z-index: 2;
+    color: rgb(29, 29, 27);
+    animation: rollTheDice 0.5s infinite;
+    background: white;
+    
+}
+
+button {
+    display: inline-block;
+    color: #fff;
+    padding: 20px 30px;
+    font-size: 30px;
+    margin: 40px auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Staatliches', cursive;
+}
+
+#rollBtn {
+    background-color: var(--color-5);
+    transition: all 0.5s;
+}
+
+#rollBtn:hover {
+    background-color: var(--color-12);
+}
+
+#rollBtn:disabled {
+    background-color: var(--color-4);
+    cursor: default;
+}
+
+#resetBtn {
+    background-color: var(--color-4);
+}
+
+button:focus {
+    outline: none;
+}
+
+#resetBtn {
+    display: none;
+}
+
+
+.history {
+    position: relative;
+    width: 250px;
+    min-height: 100px;
+    margin: 0 50px;
+    background-color: var(--color-3);
+    color: var(--color-6);
+    margin: 0 auto;
+    font-size: 40px;
+    border-radius: 10px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.history i {
+    margin: 10px;
+    display: inline-block;
+}
+
+.history svg {
+    display: none;
+    border-radius: 10px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.history svg path{
+    fill : #ffede1;
+}
+
+.history #player1History, .history #player2History {
+    z-index: 2;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.history.winner {
+    box-shadow:
+    rgba(0,0,0,0.2) 11px 11px 20px 0, 
+    rgba(0,0,0,0.2) -11px -11px 20px 0,
+    rgba(0,0,0,0.2) 11px -11px 20px 0, 
+    rgba(0,0,0,0.2) -11px 11px 20px 0
+}
+
+
+
+.history.winner svg {
+    display: block;
+}
+
+
+
+@keyframes rollTheDice {
+    0%{
+        content: '\e901';
+    }
+    20%{
+        content: '\e903';
+    }
+    40%{
+        content: '\e905';
+    }
+    60%{
+        content: '\e907';
+    }
+    80%{
+        content: '\e909';
+    }
+    100%{
+        content: '\e90b';
+    }
+}
+
+@keyframes rotate {
+    from { -webkit-transform: rotate(0deg); }
+    to   { -webkit-transform: rotate(20deg); }
+}

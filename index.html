@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="font.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Staatliches&display=swap" rel="stylesheet">
+    <title>Dice game</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="message">Player 1 Turn</h1>
+        <div id="playerDice" class="dice ">
+            <i class="dice-1"><span class="path1"></span><span class="path2"></span></i>
+        </div>
+        <div class="actions">
+            <button id="rollBtn">Roll Dice 🎲</button>
+            <button id="resetBtn">Reset Game 🔁</button>
+        </div>
+        <div class="players">
+            <div id="player1">
+                <h2>Player 1</h2>
+                <section>
+                    <h3>Score: 
+                        <span id="player1Scoreboard">0</span>
+                    </h3>
+                    <div id="p1board" class="history">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto; z-index:1" preserveAspectRatio="xMidYMid" viewBox="175 100 200 200">
+                            <g transform="">
+                                <g transform="translate(282 200)">
+                                    <g>
+                                        <path d="M0 0L423 0 L390.80104225227427 161.87509189043297 Z" ></path>
+                                        <path d="M0 0L299.10616844190963 299.1061684419096 L161.875091890433 390.80104225227427 Z"></path>
+                                        <path d="M0 0L2.5901279801966522e-14 423 L-161.87509189043294 390.80104225227427 Z"></path>
+                                        <path d="M0 0L-299.1061684419096 299.10616844190963 L-390.80104225227427 161.87509189043303 Z"></path>
+                                        <path d="M0 0L-423 5.1802559603933043e-14 L-390.8010422522743 -161.87509189043294 Z"></path>
+                                        <path d="M0 0L-299.1061684419097 -299.1061684419096 L-161.87509189043323 -390.8010422522742 Z"></path>
+                                        <path d="M0 0L-7.770383940589955e-14 -423 L161.87509189043308 -390.80104225227427 Z"></path>
+                                        <path d="M0 0L299.1061684419095 -299.1061684419097 L390.8010422522742 -161.87509189043323 Z"></path>
+                                        <animateTransform attributeName="transform" type="rotate" values="0 0 0;90 0 0" keyTimes="0;1" dur="10s" repeatCount="indefinite"></animateTransform>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        <div id="player1History"></div>
+                    </div>
+                </section>
+            </div>
+            <div id="player2">
+                <h2>Player 2</h2>
+                <section>
+                    <h3>Score: 
+                        <span id="player2Scoreboard">0</span>
+                    </h3>
+                    <div id="p2board" class="history">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin:auto; z-index:1" preserveAspectRatio="xMidYMid" viewBox="175 100 200 200">
+                            <g transform="">
+                                <g transform="translate(282 200)">
+                                    <g>
+                                        <path d="M0 0L423 0 L390.80104225227427 161.87509189043297 Z" ></path>
+                                        <path d="M0 0L299.10616844190963 299.1061684419096 L161.875091890433 390.80104225227427 Z"></path>
+                                        <path d="M0 0L2.5901279801966522e-14 423 L-161.87509189043294 390.80104225227427 Z"></path>
+                                        <path d="M0 0L-299.1061684419096 299.10616844190963 L-390.80104225227427 161.87509189043303 Z"></path>
+                                        <path d="M0 0L-423 5.1802559603933043e-14 L-390.8010422522743 -161.87509189043294 Z"></path>
+                                        <path d="M0 0L-299.1061684419097 -299.1061684419096 L-161.87509189043323 -390.8010422522742 Z"></path>
+                                        <path d="M0 0L-7.770383940589955e-14 -423 L161.87509189043308 -390.80104225227427 Z"></path>
+                                        <path d="M0 0L299.1061684419095 -299.1061684419097 L390.8010422522742 -161.87509189043323 Z"></path>
+                                        <animateTransform attributeName="transform" type="rotate" values="0 0 0;90 0 0" keyTimes="0;1" dur="10s" repeatCount="indefinite"></animateTransform>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        <div id="player2History"></div>
+                    </div>
+                </section>
+                
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
