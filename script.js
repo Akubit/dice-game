@@ -8,6 +8,21 @@ class Player {
         this.history = document.getElementById(history);
         this.diceBoard = document.getElementById(diceboard);
     }
+
+    roll () {
+        die = Math.floor((Math.random() * 6) + 1)
+        this.score += die
+        this.dice.push(dieImage[die-1])
+        this.history.innerHTML = this.dice.join(" ")
+        this.display.textContent =  this.score
+    }
+
+    resetPlayer () {
+        this.dice = []
+        this.score = 0
+        this.history.innerHTML= ''
+        this.display.textContent= '0'
+    }
 }
 
 let playerOne = new Player('Player 1','player1Scoreboard','player1History','p1board')
@@ -37,11 +52,7 @@ function rollTheDie(player) {
     rollBtn.disabled = true
     dieDisplay.classList.add('active')
     setTimeout(() => {
-        die = Math.floor((Math.random() * 6) + 1)
-        player.score += die
-        player.dice.push(dieImage[die-1])
-        player.history.innerHTML = player.dice.join(" ")
-        player.display.textContent =  player.score
+        player.roll();
         dieDisplay.innerHTML = dieImage[die-1]
         dieDisplay.classList.remove('active')
         if (player.score >= 20) {
@@ -62,17 +73,10 @@ function rollTheDice() {
     currentPlayer === playerOne ? rollTheDie(playerOne) : rollTheDie(playerTwo)
 }
 
-function resetPlayer(player) {
-    player.dice = []
-    player.score = 0
-    player.history.innerHTML= ''
-    player.display.textContent= '0'
-}
-
 // Resetbtn function
 function resetGame() {
-    resetPlayer(playerOne)
-    resetPlayer(playerTwo)
+    playerOne.resetPlayer()
+    playerTwo.resetPlayer()
     currentPlayer.diceBoard.classList.remove('winner')
     currentPlayer = playerOne
     message.textContent = ` ${currentPlayer.name} turn!`
