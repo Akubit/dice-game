@@ -1,5 +1,4 @@
 // Players 
-
 class Player {
     constructor(name, display, history, diceboard) {
         this.name= name ;
@@ -31,26 +30,20 @@ let currentPlayer = playerOne
 const message = document.getElementById('message')
 const rollBtn = document.getElementById('rollBtn')
 const resetBtn = document.getElementById('resetBtn')
-
 message.textContent = ` ${currentPlayer.name} turn!`
 
 // Logic for dice roll
 function rollTheDie(player) {
-
     rollBtn.disabled = true
     dieDisplay.classList.add('active')
-
     setTimeout(() => {
         die = Math.floor((Math.random() * 6) + 1)
         player.score += die
         player.dice.push(dieImage[die-1])
-        
         player.history.innerHTML = player.dice.join(" ")
         player.display.textContent =  player.score
-
         dieDisplay.innerHTML = dieImage[die-1]
         dieDisplay.classList.remove('active')
-
         if (player.score >= 20) {
             message.textContent = ` ${player.name} VICTORY!`
             player.diceBoard.classList.add('winner')
@@ -60,9 +53,7 @@ function rollTheDie(player) {
             currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne
             message.textContent = ` ${currentPlayer.name} turn!`
         }
-
         rollBtn.disabled = false;
-
     }, 2000)
 }
 
@@ -78,7 +69,6 @@ function resetPlayer(player) {
     player.display.textContent= '0'
 }
 
-
 // Resetbtn function
 function resetGame() {
     resetPlayer(playerOne)
@@ -89,7 +79,6 @@ function resetGame() {
     rollBtn.style.display = "block"
     resetBtn.style.display = "none"
 }
-
 
 // Event listeners
 rollBtn.addEventListener('click',rollTheDice)
