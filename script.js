@@ -1,21 +1,18 @@
 // Players 
-let playerOne = {
-    name: 'Player 1',
-    score : 0,
-    dice: [],
-    display: document.getElementById('player1Scoreboard'),
-    history: document.getElementById('player1History'),
-    diceBoard: document.getElementById('p1board'),
+
+class Player {
+    constructor(name, display, history, diceboard) {
+        this.name= name ;
+        this.score = 0;
+        this.dice = [];
+        this.display = document.getElementById(display);
+        this.history = document.getElementById(history);
+        this.diceBoard = document.getElementById(diceboard);
+    }
 }
-let playerTwo = {
-    name: 'Player 2',
-    score : 0,
-    dice: [],
-    display: document.getElementById('player2Scoreboard'),
-    history: document.getElementById('player2History'),
-    history: document.getElementById('player2History'),
-    diceBoard: document.getElementById('p2board'),
-}
+
+let playerOne = new Player('Player 1','player1Scoreboard','player1History','p1board')
+let playerTwo = new Player('Player 2','player2Scoreboard','player2History','p2board')
 
 // Die 
 let die = 0
@@ -34,6 +31,7 @@ let currentPlayer = playerOne
 const message = document.getElementById('message')
 const rollBtn = document.getElementById('rollBtn')
 const resetBtn = document.getElementById('resetBtn')
+
 message.textContent = ` ${currentPlayer.name} turn!`
 
 // Logic for dice roll
@@ -73,18 +71,19 @@ function rollTheDice() {
     currentPlayer === playerOne ? rollTheDie(playerOne) : rollTheDie(playerTwo)
 }
 
+function resetPlayer(player) {
+    player.dice = []
+    player.score = 0
+    player.history.innerHTML= ''
+    player.display.textContent= '0'
+}
+
 
 // Resetbtn function
 function resetGame() {
+    resetPlayer(playerOne)
+    resetPlayer(playerTwo)
     currentPlayer.diceBoard.classList.remove('winner')
-    playerOne.dice = []
-    playerOne.score = 0
-    playerOne.history.innerHTML= ''
-    playerOne.display.textContent= '0'
-    playerTwo.dice = []
-    playerTwo.score = 0
-    playerTwo.history.innerHTML = ''
-    playerTwo.display.textContent= '0';
     currentPlayer = playerOne
     message.textContent = ` ${currentPlayer.name} turn!`
     rollBtn.style.display = "block"
